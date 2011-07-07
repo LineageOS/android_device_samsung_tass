@@ -27,23 +27,22 @@
     <bool name="config_animateScreenLights">false</bool>
 
     <string-array translatable="false" name="config_tether_usb_regexs">
-        <item>"usb0"</item>
+        <item>usb0</item>
     </string-array>
 
     <string-array translatable="false" name="config_tether_upstream_regexs">
-    	<item>"wlan0"</item>
-    	<item>"rmnet0"</item>
+    	<item>"pdp\\d"</item> 
+    	<item>"eth\\d"</item>
     </string-array>
 
     <string-array translatable="false" name="config_tether_wifi_regexs">
         <item>"athap0"</item>
     </string-array>
 
-
     <!-- Allow the menu hard key to be disabled in LockScreen on some devices -->
     <bool name="config_disableMenuKeyInLockScreen">true</bool>
 
-    <bool name="config_automatic_brightness_available">true</bool>
+    <bool name="config_automatic_brightness_available">false</bool>
 
     <integer name="config_lightSensorWarmupTime">250</integer>
 
