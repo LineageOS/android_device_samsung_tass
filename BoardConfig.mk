@@ -23,6 +23,8 @@ LOCAL_PATH:= $(call my-dir)
 # variant, so that it gets overwritten by the parent (which goes
 # against the traditional rules of inheritance).
 USE_CAMERA_STUB:= false
+BOARD_USE_FROYO_LIBCAMERA := true
+COPYBIT_MSM7K := true
 
 TARGET_NO_BOOTLOADER := true
 
@@ -75,8 +77,10 @@ BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/tass/recovery_ui.c
 BOARD_USE_USB_MASS_STORAGE_SWITCH := true
 TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun
 BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
+BOARD_HAS_DOWNLOAD_MODE := true
 
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true 
+TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
 BOARD_USE_GR_FLIP_32 := true
 BOARD_FB_FORCE_24_BPP := true
 BOARD_FB_SINGLE_BUFFERED := true

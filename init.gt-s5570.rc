@@ -5,11 +5,11 @@ on init
     insmod /lib/modules/fsr_stl.ko
     insmod /lib/modules/sec_param.ko
 
-    mount ext4 /dev/block/stl12 /system wait nosuid nodev noatime nodiratime noauto_da_alloc
+    mount ext4 /dev/block/stl12 /system
     mount rfs /dev/stl12 /system ro check=no
-    mount ext4 /dev/block/stl13 /data wait nosuid nodev noatime nodiratime noauto_da_alloc
+    mount ext4 /dev/block/stl13 /data nosuid nodev
     mount rfs /dev/stl12 /system ro check=no
-    mount ext4 /dev/block/stl14 /cache wait nosuid nodev noatime nodiratime noauto_da_alloc
+    mount ext4 /dev/block/stl14 /cache nosuid nodev
     mount rfs /dev/stl14 /cache nosuid nodev check=no
 
 # cpufreq configurations
@@ -130,15 +130,24 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dawext -W -w -iwlan0 -c/data/
 	disabled
 	oneshot
 
+service wlan_mac /system/bin/wlan_mac
+    user system
+    group system net_raw net_admin inet
+    oneshot
+
+service wlan_tool /system/bin/wlan_tool
+    disabled
+    oneshot
+
 service dhcpcd_wlan0 /system/bin/dhcpcd -BKL
 	disabled
 	oneshot
 
-service hostapd /system/bin/hostapd -dddd /data/hostapd/hostapd.conf
-    user root
-    group root
-    oneshot
-    disabled
+service hostapd /system/bin/hostapd /data/misc/wifi/hostapd.conf
+	socket hostapd_athap0 dgram 660 wifi wifi
+	group wifi inet
+	oneshot
+	disabled
 
 service gps-daemon /system/bin/gpsd
     user system

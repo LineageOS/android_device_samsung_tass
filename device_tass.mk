@@ -21,7 +21,8 @@ PRODUCT_PACKAGES += \
     libOmxCore \
     libOmxVidEnc \
     make_ext4fs \
-    dexpreopt
+    dexpreopt 
+#    gps.tass \
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/samsung/tass/kernel
@@ -100,8 +101,18 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/tass/proprietary/lib/liboemcamera.so:system/lib/liboemcamera.so \
     vendor/samsung/tass/proprietary/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
     vendor/samsung/tass/proprietary/lib/libmmipl.so:system/lib/libmmipl.so \
-    vendor/samsung/tass/proprietary/lib/libs3cjpeg.so:system/lib/libs3cjpeg.so
-
+    vendor/samsung/tass/proprietary/lib/libs3cjpeg.so:system/lib/libs3cjpeg.so \
+    vendor/samsung/tass/proprietary/lib/libActionShot.so:system/lib/libActionShot.so \
+    vendor/samsung/tass/proprietary/lib/libarccamera.so:system/lib/libarccamera.so \
+    vendor/samsung/tass/proprietary/lib/libCaMotion.so:system/lib/libCaMotion.so \
+    vendor/samsung/tass/proprietary/lib/libcaps.so:system/lib/libcaps.so \
+    vendor/samsung/tass/proprietary/lib/libPanoraMax1.so:system/lib/libPanoraMax1.so \
+    vendor/samsung/tass/proprietary/lib/libPlusMe.so:system/lib/libPlusMe.so \
+    vendor/samsung/tass/proprietary/lib/libseccamera.so:system/lib/libseccamera.so \
+    vendor/samsung/tass/proprietary/lib/libseccameraadaptor.so:system/lib/libseccameraadaptor.so \
+    vendor/samsung/tass/proprietary/lib/libcamera.so:system/lib/libcamera.so \
+    vendor/samsung/tass/proprietary/lib/libcamera_client.so:system/lib/libcamera_client.so \
+    vendor/samsung/tass/proprietary/lib/libcameraservice.so:system/lib/libcameraservice.so 
 
 ## Atheros AR6002 firmware
 PRODUCT_COPY_FILES += \
@@ -117,11 +128,14 @@ PRODUCT_COPY_FILES += \
     device/samsung/tass/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     vendor/samsung/tass/proprietary/bin/hostapd:system/bin/hostapd \
     device/samsung/tass/hostapd.conf:system/etc/wifi/hostapd.conf \
-    device/samsung/tass/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf 
+    device/samsung/tass/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
+    vendor/samsung/tass/proprietary/bin/wlan_mac:system/bin/wlan_mac \
+    vendor/samsung/tass/proprietary/bin/wlan_tool:system/bin/wlan_tool \
+    vendor/samsung/tass/proprietary/bin/wmiconfig:system/bin/wmiconfig 
 
 ## Bluetooth
 PRODUCT_COPY_FILES += \
-    vendor/samsung/tass/proprietary/bin/BCM2049C0_003.001.031.0088.0094.hcd:system/bin/BCM2049C0_003.001.031.0088.0094.hcd 
+    vendor/samsung/tass/proprietary/bin/BCM2049C0_003.001.031.0088.0094.hcd:system/bin/BCM2049C0_003.001.031.0088.0094.hcd \
 	
 ## Audio
 PRODUCT_COPY_FILES += \
@@ -132,20 +146,23 @@ PRODUCT_COPY_FILES += \
 
 ##GPS
 PRODUCT_COPY_FILES += \
-#    vendor/samsung/tass/proprietary/lib/hw/gps.msm7k.so:system/lib/hw/gps.msm7k.so \
-#    vendor/samsung/tass/proprietary/bin/gpsd:system/bin/gpsd \
+    vendor/samsung/tass/proprietary/lib/hw/gps.msm7k.so:system/lib/hw/gps.msm7k.so \
+    vendor/samsung/tass/proprietary/bin/gpsd:system/bin/gpsd 
 
 ## Other libraries and proprietary binaries
 PRODUCT_COPY_FILES += \
     vendor/samsung/tass/proprietary/lib/hw/lights.msm7k.so:system/lib/hw/lights.msm7k.so \
     device/samsung/tass/media_profiles.xml:system/etc/media_profiles.xml \
     device/samsung/tass/vold.fstab:system/etc/vold.fstab \
+    device/samsung/tass/prebuilt/ramzswap.ko:system/lib/modules/ramzswap.ko 
+#    device/samsung/tass/prebuilt/cifs.ko:system/lib/modules/cifs.ko \
+#    device/samsung/tass/prebuilt/tun.ko:system/lib/modules/tun.ko \
 
 ## keymap
 PRODUCT_COPY_FILES += \
     device/samsung/tass/qwerty.kl:system/usr/keylayout/qwerty.kl \
     device/samsung/tass/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
-    device/samsung/tass/sec_key.kl:system/usr/keychars/sec_key.kl \
+    device/samsung/tass/sec_key.kl:system/usr/keychars/sec_key.kl 
 	
 ## 3D
 PRODUCT_COPY_FILES += \

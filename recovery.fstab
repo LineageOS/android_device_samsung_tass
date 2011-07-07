@@ -6,4 +6,4 @@
 /data	ext4	/dev/block/stl13	NULL	rfs	NULL	rw,nosuid,nodev,check=no
 /system	ext4	/dev/block/stl12	NULL	rfs	NULL	check=no
 /sdcard	vfat	/dev/block/mmcblk0p1	/dev/block/mmcblk0	NULL	NULL	NULL
-
+/sd-ext ext4    /dev/block/mmcblk0p2	NULL	NULL	NULL	NULL
