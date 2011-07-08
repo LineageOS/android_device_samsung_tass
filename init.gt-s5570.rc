@@ -8,7 +8,7 @@ on init
     mount ext4 /dev/block/stl12 /system
     mount rfs /dev/stl12 /system ro check=no
     mount ext4 /dev/block/stl13 /data nosuid nodev
-    mount rfs /dev/stl12 /system ro check=no
+    mount rfs /dev/stl13 /data ro check=no
     mount ext4 /dev/block/stl14 /cache nosuid nodev
     mount rfs /dev/stl14 /cache nosuid nodev check=no
 

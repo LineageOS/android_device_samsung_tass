@@ -27,12 +27,13 @@
     <bool name="config_animateScreenLights">false</bool>
 
     <string-array translatable="false" name="config_tether_usb_regexs">
-        <item>usb0</item>
+        <item>"usb0"</item>
     </string-array>
 
     <string-array translatable="false" name="config_tether_upstream_regexs">
     	<item>"pdp\\d"</item> 
-    	<item>"eth\\d"</item>
+    	<item>"rmnet\\d"</item>
+    	<item>"wlan\\d"</item>
     </string-array>
 
     <string-array translatable="false" name="config_tether_wifi_regexs">
