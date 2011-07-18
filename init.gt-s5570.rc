@@ -3,6 +3,8 @@ on init
 # insmod fsr modules
     insmod /lib/modules/fsr.ko
     insmod /lib/modules/fsr_stl.ko
+    insmod /lib/modules/rfs_glue.ko
+    insmod /lib/modules/rfs_fat.ko
     insmod /lib/modules/sec_param.ko
 
     mount ext4 /dev/block/stl12 /system
@@ -81,6 +83,8 @@ on boot
     chmod 0660 /data/misc/sensors/accel_offset
     chmod 0664 /sys/devices/virtual/accelerometer/accelerometer/calibrate
     chmod 0664 /sys/class/input/input3/enable
+    chmod 0660 /sys/class/input/input3/poll_delay
+    chmod 0664 /sys/class/usb_composite/rndis/enable
 
     chown system radio /sys/devices/virtual/touch/firmware/firmware
     chmod 0664 /sys/devices/virtual/touch/firmware/firmware
