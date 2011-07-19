@@ -93,7 +93,8 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/tass/proprietary/lib/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \
     vendor/samsung/tass/proprietary/lib/libOmxQcelp13Enc.so:system/lib/libOmxQcelp13Enc.so \
     vendor/samsung/tass/proprietary/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so
+    vendor/samsung/tass/proprietary/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \
+    vendor/samsung/tass/proprietary/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so
 
 ## Camera proprietaries
 PRODUCT_COPY_FILES += \
