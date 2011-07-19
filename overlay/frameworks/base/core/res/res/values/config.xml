@@ -27,7 +27,7 @@
     <bool name="config_animateScreenLights">false</bool>
 
     <string-array translatable="false" name="config_tether_usb_regexs">
-        <item>"usb0"</item>
+        <item>"usb\\d"</item>
     </string-array>
 
     <string-array translatable="false" name="config_tether_upstream_regexs">
