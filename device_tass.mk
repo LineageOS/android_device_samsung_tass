@@ -19,8 +19,6 @@ PRODUCT_PACKAGES += \
     copybit.tass \
     gralloc.tass \
     libOmxCore \
-    libOmxVidEnc \
-    libmm-omxcore \
     make_ext4fs \
     dexpreopt \
     screencap
@@ -88,13 +86,25 @@ PRODUCT_COPY_FILES += \
     vendor/samsung/tass/proprietary/lib/libOmxAmrRtpDec.so:system/lib/libOmxAmrRtpDec.so \
     vendor/samsung/tass/proprietary/lib/libOmxAmrwbDec.so:system/lib/libOmxAmrwbDec.so \
     vendor/samsung/tass/proprietary/lib/libOmxEvrcEnc.so:system/lib/libOmxEvrcEnc.so \
+    vendor/samsung/tass/proprietary/lib/libOmxEvrcHwDec.so:system/lib/libOmxEvrcHwDec.so \
     vendor/samsung/tass/proprietary/lib/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \
     vendor/samsung/tass/proprietary/lib/libOmxMp3Dec.so:system/lib/libOmxMp3Dec.so \
     vendor/samsung/tass/proprietary/lib/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \
+    vendor/samsung/tass/proprietary/lib/libOmxOn2Dec.so:system/lib/libOmxOn2Dec.so \
     vendor/samsung/tass/proprietary/lib/libOmxQcelp13Enc.so:system/lib/libOmxQcelp13Enc.so \
+    vendor/samsung/tass/proprietary/lib/libOmxQcelpHwDec.so:system/lib/libOmxQcelpHwDec.so \
+    vendor/samsung/tass/proprietary/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \
     vendor/samsung/tass/proprietary/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so
+    vendor/samsung/tass/proprietary/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so 
+
+## OMX shared
+PRODUCT_COPY_FILES += \
+    vendor/samsung/tass/proprietary/lib/libomx_aacdec_sharedlibrary.so:system/lib/libomx_aacdec_sharedlibrary.so \
+    vendor/samsung/tass/proprietary/lib/libomx_amrdec_sharedlibrary.so:system/lib/libomx_amrdec_sharedlibrary.so \
+    vendor/samsung/tass/proprietary/lib/libomx_amrenc_sharedlibrary.so:system/lib/libomx_amrenc_sharedlibrary.so \
+    vendor/samsung/tass/proprietary/lib/libomx_avcdec_sharedlibrary.so:system/lib/libomx_avcdec_sharedlibrary.so \
+    vendor/samsung/tass/proprietary/lib/libomx_m4vdec_sharedlibrary.so:system/lib/libomx_m4vdec_sharedlibrary.so \
+    vendor/samsung/tass/proprietary/lib/libomx_mp3dec_sharedlibrary.so:system/lib/libomx_mp3dec_sharedlibrary.so 
 
 ## Camera proprietaries
 PRODUCT_COPY_FILES += \
