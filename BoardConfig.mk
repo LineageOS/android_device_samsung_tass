@@ -53,18 +53,24 @@ JS_ENGINE := v8
 BOARD_USE_SCREENCAP:= true
 BOARD_MOBILEDATA_INTERFACE_NAME:= "pdp0"
 
-#BOARD_HAVE_FM_RADIO := true
-#BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
+# FM Radio
+BOARD_HAVE_FM_RADIO := true
+BOARD_GLOBAL_CFLAGS += -DHAVE_FM_RADIO
+BOARD_FM_DEVICE := bcm4325
 
 BOARD_KERNEL_CMDLINE := 
 BOARD_KERNEL_BASE := 0x13600000	 
 BOARD_KERNEL_PAGESIZE := 4096 
 TARGET_PREBUILT_KERNEL := device/samsung/tass/kernel	
-TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/tass/recovery_kernel
 TARGET_RECOVERY_INITRC := device/samsung/tass/recovery.rc
 
+TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/tass/recovery_kernel
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/tass/recovery/recovery_ui.c
+BOARD_CUSTOM_GRAPHICS           := ../../../device/samsung/tass/recovery/graphics.c
+BOARD_USE_USB_MASS_STORAGE_SWITCH := true
+BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
+
 TARGET_PROVIDES_LIBAUDIO := true
-#TARGET_PROVIDES_LIBRIL := true
 
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
@@ -74,15 +80,9 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 190054400
 BOARD_FLASH_BLOCK_SIZE := 131072
 BOARD_BML_BOOT := "/dev/block/bml8"
 BOARD_BML_RECOVERY := "/dev/block/bml9"
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/tass/recovery_ui.c
 
-BOARD_USE_USB_MASS_STORAGE_SWITCH := true
-TARGET_USE_CUSTOM_LUN_FILE_PATH := /sys/devices/platform/usb_mass_storage/lun
-BOARD_UMS_LUNFILE := "/sys/devices/platform/usb_mass_storage/lun0/file"
 
 TARGET_LIBAGL_USE_GRALLOC_COPYBITS := true 
-TARGET_USES_16BPPSURFACE_FOR_OPAQUE := true
-#BOARD_HAS_NO_SELECT_BUTTON := true
 
 ## to enable the GPS HAL
 BOARD_GPS_LIBRARIES := libloc_api
