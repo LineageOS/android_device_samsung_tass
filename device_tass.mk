@@ -1,17 +1,8 @@
 #$(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 $(call inherit-product, build/target/product/full_base.mk)
 
-PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
-PRODUCT_NAME := tass
-PRODUCT_DEVICE := tass
-PRODUCT_MODEL := GT-S5570
-
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
-
-$(call inherit-product-if-exists, vendor/samsung/tass/tass-vendor.mk)
-
-DEVICE_PACKAGE_OVERLAYS += device/samsung/tass/overlay
 
 # HAL libs and other system binaries
 PRODUCT_PACKAGES += \
@@ -22,7 +13,6 @@ PRODUCT_PACKAGES += \
     make_ext4fs \
     dexpreopt \
     screencap
-#    gps.tass \
 
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := device/samsung/tass/kernel
@@ -32,18 +22,6 @@ endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
-
-# Live wallpaper packages
-PRODUCT_PACKAGES += \
-    LiveWallpapers \
-    LiveWallpapersPicker \
-    MagicSmokeWallpapers \
-    VisualizationWallpapers \
-    librs_jni
-
-# Publish that we support the live wallpaper feature.
-PRODUCT_COPY_FILES += \
-    packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
 ## Hardware properties 
 PRODUCT_COPY_FILES += \
@@ -65,127 +43,31 @@ PRODUCT_COPY_FILES += \
     device/samsung/tass/prebuilt/rfs_glue.ko:root/lib/modules/rfs_glue.ko \
     device/samsung/tass/prebuilt/sec_param.ko:root/lib/modules/sec_param.ko \
     device/samsung/tass/TASS.rle:root/TASS.rle \
-    device/samsung/tass/init.gt-s5570.rc:root/init.gt-s5570.rc
+    device/samsung/tass/init.gt-s5570.rc:root/init.gt-s5570.rc \
+    device/samsung/tass/prebuilt/ramzswap.ko:system/lib/modules/ramzswap.ko 
 
-## RIL related stuff
+## Wifi Stuff
 PRODUCT_COPY_FILES += \
-    vendor/samsung/tass/proprietary/bin/qmuxd:system/bin/qmuxd \
-    vendor/samsung/tass/proprietary/lib/libdiag.so:system/lib/libdiag.so \
-    vendor/samsung/tass/proprietary/lib/libsec-ril.so:system/lib/libsec-ril.so \
-    vendor/samsung/tass/proprietary/lib/libsecril-client.so:system/lib/libsecril-client.so \
-    vendor/samsung/tass/proprietary/lib/libril.so:system/lib/libril.so 
-
-## OMX proprietaries
-PRODUCT_COPY_FILES += \
-    vendor/samsung/tass/proprietary/lib/libmm-adspsvc.so:system/lib/libmm-adspsvc.so \
-    vendor/samsung/tass/proprietary/lib/libOmxAacDec.so:system/lib/libOmxAacDec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxAacEnc.so:system/lib/libOmxAacEnc.so \
-    vendor/samsung/tass/proprietary/lib/libOmxAdpcmDec.so:system/lib/libOmxAdpcmDec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxAmrDec.so:system/lib/libOmxAmrDec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxAmrEnc.so:system/lib/libOmxAmrEnc.so \
-    vendor/samsung/tass/proprietary/lib/libOmxAmrRtpDec.so:system/lib/libOmxAmrRtpDec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxAmrwbDec.so:system/lib/libOmxAmrwbDec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxEvrcEnc.so:system/lib/libOmxEvrcEnc.so \
-    vendor/samsung/tass/proprietary/lib/libOmxEvrcHwDec.so:system/lib/libOmxEvrcHwDec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxH264Dec.so:system/lib/libOmxH264Dec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxMp3Dec.so:system/lib/libOmxMp3Dec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxMpeg4Dec.so:system/lib/libOmxMpeg4Dec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxOn2Dec.so:system/lib/libOmxOn2Dec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxQcelp13Enc.so:system/lib/libOmxQcelp13Enc.so \
-    vendor/samsung/tass/proprietary/lib/libOmxQcelpHwDec.so:system/lib/libOmxQcelpHwDec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxVidEnc.so:system/lib/libOmxVidEnc.so \
-    vendor/samsung/tass/proprietary/lib/libOmxWmaDec.so:system/lib/libOmxWmaDec.so \
-    vendor/samsung/tass/proprietary/lib/libOmxWmvDec.so:system/lib/libOmxWmvDec.so 
-
-## OMX shared
-PRODUCT_COPY_FILES += \
-    vendor/samsung/tass/proprietary/lib/libomx_aacdec_sharedlibrary.so:system/lib/libomx_aacdec_sharedlibrary.so \
-    vendor/samsung/tass/proprietary/lib/libomx_amrdec_sharedlibrary.so:system/lib/libomx_amrdec_sharedlibrary.so \
-    vendor/samsung/tass/proprietary/lib/libomx_amrenc_sharedlibrary.so:system/lib/libomx_amrenc_sharedlibrary.so \
-    vendor/samsung/tass/proprietary/lib/libomx_avcdec_sharedlibrary.so:system/lib/libomx_avcdec_sharedlibrary.so \
-    vendor/samsung/tass/proprietary/lib/libomx_m4vdec_sharedlibrary.so:system/lib/libomx_m4vdec_sharedlibrary.so \
-    vendor/samsung/tass/proprietary/lib/libomx_mp3dec_sharedlibrary.so:system/lib/libomx_mp3dec_sharedlibrary.so 
-
-## Camera proprietaries
-PRODUCT_COPY_FILES += \
-    vendor/samsung/tass/proprietary/lib/liboemcamera.so:system/lib/liboemcamera.so \
-    vendor/samsung/tass/proprietary/lib/libmmjpeg.so:system/lib/libmmjpeg.so \
-    vendor/samsung/tass/proprietary/lib/libmmipl.so:system/lib/libmmipl.so \
-    vendor/samsung/tass/proprietary/lib/libs3cjpeg.so:system/lib/libs3cjpeg.so \
-    vendor/samsung/tass/proprietary/lib/libActionShot.so:system/lib/libActionShot.so \
-    vendor/samsung/tass/proprietary/lib/libarccamera.so:system/lib/libarccamera.so \
-    vendor/samsung/tass/proprietary/lib/libCaMotion.so:system/lib/libCaMotion.so \
-    vendor/samsung/tass/proprietary/lib/libcaps.so:system/lib/libcaps.so \
-    vendor/samsung/tass/proprietary/lib/libPanoraMax1.so:system/lib/libPanoraMax1.so \
-    vendor/samsung/tass/proprietary/lib/libPlusMe.so:system/lib/libPlusMe.so \
-    vendor/samsung/tass/proprietary/lib/libseccamera.so:system/lib/libseccamera.so \
-    vendor/samsung/tass/proprietary/lib/libseccameraadaptor.so:system/lib/libseccameraadaptor.so \
-    vendor/samsung/tass/proprietary/lib/libcamera.so:system/lib/libcamera.so \
-    vendor/samsung/tass/proprietary/lib/libcamera_client.so:system/lib/libcamera_client.so \
-    vendor/samsung/tass/proprietary/lib/libcameraservice.so:system/lib/libcameraservice.so 
-
-## Atheros AR6002 firmware
-PRODUCT_COPY_FILES += \
-    vendor/samsung/tass/proprietary/wifi/ar6000.ko:system/wifi/ar6000.ko \
-    vendor/samsung/tass/proprietary/wifi/ath6k/AR6003/hw2.0/athtcmd_ram.bin:system/wifi/ath6k/AR6003/hw2.0/athtcmd_ram.bin \
-    vendor/samsung/tass/proprietary/wifi/ath6k/AR6003/hw2.0/athwlan.bin.z77:system/wifi/ath6k/AR6003/hw2.0/athwlan.bin.z77 \
-    vendor/samsung/tass/proprietary/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin:system/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin \
-    vendor/samsung/tass/proprietary/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin.01:system/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin.01 \
-    vendor/samsung/tass/proprietary/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin.02:system/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin.02 \
-    vendor/samsung/tass/proprietary/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin.03:system/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin.03 \
-    vendor/samsung/tass/proprietary/wifi/ath6k/AR6003/hw2.0/data.patch.bin:system/wifi/ath6k/AR6003/hw2.0/data.patch.bin \
-    vendor/samsung/tass/proprietary/wifi/ath6k/AR6003/hw2.0/otp.bin.z77:system/wifi/ath6k/AR6003/hw2.0/otp.bin.z77 \
     device/samsung/tass/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-    vendor/samsung/tass/proprietary/bin/hostapd:system/bin/hostapd \
     device/samsung/tass/hostapd.conf:system/etc/wifi/hostapd.conf \
-    device/samsung/tass/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf \
-    vendor/samsung/tass/proprietary/bin/wlan_mac:system/bin/wlan_mac \
-    vendor/samsung/tass/proprietary/bin/wlan_tool:system/bin/wlan_tool \
-    vendor/samsung/tass/proprietary/bin/wmiconfig:system/bin/wmiconfig 
+    device/samsung/tass/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf 
 
-## Bluetooth
-PRODUCT_COPY_FILES += \
-    vendor/samsung/tass/proprietary/bin/BCM2049C0_003.001.031.0088.0094.hcd:system/bin/BCM2049C0_003.001.031.0088.0094.hcd \
-	
-## Audio
+## Media
 PRODUCT_COPY_FILES += \
     device/samsung/tass/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt \
     device/samsung/tass/AudioFilter.csv:system/etc/AudioFilter.csv \
-    vendor/samsung/tass/proprietary/lib/liba2dp.so:system/lib/liba2dp.so \
-    vendor/samsung/tass/proprietary/lib/libaudioeq.so:system/lib/libaudioeq.so 
-
-##GPS
-PRODUCT_COPY_FILES += \
-    vendor/samsung/tass/proprietary/lib/hw/gps.msm7k.so:system/lib/hw/gps.msm7k.so \
-    vendor/samsung/tass/proprietary/bin/gpsd:system/bin/gpsd 
-
-## Other libraries and proprietary binaries
-PRODUCT_COPY_FILES += \
-    vendor/samsung/tass/proprietary/lib/hw/lights.msm7k.so:system/lib/hw/lights.msm7k.so \
     device/samsung/tass/media_profiles.xml:system/etc/media_profiles.xml \
     device/samsung/tass/vold.fstab:system/etc/vold.fstab \
-    device/samsung/tass/prebuilt/ramzswap.ko:system/lib/modules/ramzswap.ko 
-#    device/samsung/tass/prebuilt/cifs.ko:system/lib/modules/cifs.ko \
-#    device/samsung/tass/prebuilt/tun.ko:system/lib/modules/tun.ko \
 
 ## keymap
 PRODUCT_COPY_FILES += \
     device/samsung/tass/qwerty.kl:system/usr/keylayout/qwerty.kl \
     device/samsung/tass/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
     device/samsung/tass/sec_key.kl:system/usr/keychars/sec_key.kl 
-	
-## 3D
-PRODUCT_COPY_FILES += \
-    vendor/samsung/tass/proprietary/lib/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
-    vendor/samsung/tass/proprietary/lib/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
-    vendor/samsung/tass/proprietary/lib/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
-    vendor/samsung/tass/proprietary/lib/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
-    vendor/samsung/tass/proprietary/etc/firmware/yamato_pfp.fw:system/etc/firmware/yamato_pfp.fw \
-    vendor/samsung/tass/proprietary/etc/firmware/yamato_pm4.fw:system/etc/firmware/yamato_pm4.fw \
-    vendor/samsung/tass/proprietary/lib/libgsl.so:system/lib/libgsl.so \
-    vendor/samsung/tass/proprietary/lib/egl/egl.cfg:system/lib/egl/egl.cfg 
 
-## Sensor
-PRODUCT_COPY_FILES += \
-    vendor/samsung/tass/proprietary/lib/hw/sensors.default.so:system/lib/hw/sensors.default.so \
-    vendor/samsung/tass/proprietary/bin/memsicd:system/bin/memsicd 
+$(call inherit-product-if-exists, vendor/samsung/tass/tass-vendor.mk)
+
+PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
+PRODUCT_NAME := tass
+PRODUCT_DEVICE := tass
+PRODUCT_MODEL := GT-S5570
