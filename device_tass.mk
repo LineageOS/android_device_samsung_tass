@@ -4,6 +4,8 @@ $(call inherit-product, build/target/product/full_base.mk)
 # The gps config appropriate for this device
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 
+DEVICE_PACKAGE_OVERLAYS += device/samsung/tass/overlay
+
 # HAL libs and other system binaries
 PRODUCT_PACKAGES += \
     brcm_patchram_plus \
