@@ -7,21 +7,28 @@ on init
     insmod /lib/modules/rfs_fat.ko
     insmod /lib/modules/sec_param.ko
 
-    mount ext4 /dev/block/stl12 /system
-    mount rfs /dev/stl12 /system ro check=no
-    mount ext4 /dev/block/stl13 /data nosuid nodev
-    mount rfs /dev/stl13 /data ro check=no
-    mount ext4 /dev/block/stl14 /cache nosuid nodev
-    mount rfs /dev/stl14 /cache nosuid nodev check=no
+on fs
+
+# Mount partitions
+	mount ext4 /dev/block/stl12 /system
+        mount rfs /dev/stl12 /system ro check=no
+        mount ext4 /dev/block/stl13 /data nosuid nodev
+        mount rfs /dev/stl13 /data ro check=no
+        mount ext4 /dev/block/stl14 /cache nosuid nodev
+        mount rfs /dev/stl14 /cache nosuid nodev check=no
 
 # cpufreq configurations
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 245760
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
+    #write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor ondemand
     write /sys/devices/system/cpu/cpufreq/ondemand/sampling_rate 500000
     write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 90
     write /sys/devices/system/cpu/cpufreq/ondemand/down_threshold 30
 
 on boot
+
+    setprop net.tcp.buffersize.default 4096,87380,196608,4096,16384,110208
+    setprop net.tcp.buffersize.wifi    4095,87380,393216,4096,16384,110208
+
     setprop ro.bt.bdaddr_path "/data/.nvmac_bt.info"
     mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
     chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
@@ -31,9 +38,11 @@ on boot
     chown system system /sys/module/sco/parameters/disable_esco
     chmod 0660 /sys/module/bluetooth_power/parameters/power
     chmod 0660 /sys/class/rfkill/rfkill0/state
+    chmod 0660 /sys/kernel/mm/ksm/run
     chmod 0660 /proc/bluetooth/sleep/proto
     chown bluetooth bluetooth /dev/ttyHS0
     chmod 0660 /dev/ttyHS0
+    chmod 0666 /dev/graphics/fb0
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
 
@@ -146,6 +155,18 @@ service dhcpcd_wlan0 /system/bin/dhcpcd -BKL
 	disabled
 	oneshot
 
+service iprenew_wlan0 /system/bin/dhcpcd -n
+	disabled
+	oneshot
+
+service bdaddr_read /system/bin/bdaddr_read
+    user root
+    disabled
+    oneshot
+
+on property:init.svc.bootanim=running
+    start bdaddr_read
+
 service hostapd /system/bin/hostapd /data/misc/wifi/hostapd.conf
 	socket hostapd_athap0 dgram 660 wifi wifi
 	group wifi inet
@@ -161,3 +182,47 @@ service memsicd /system/bin/memsicd
 	group system
 	oneshot
 
+service setup_fs /system/bin/setup_fs /dev/block/stl13 /dev/block/stl14
+	user root
+	group root
+	oneshot
+	disabled
+
+service toggleshutter /system/bin/toggleshutter
+    user root
+    group root
+    oneshot
+	
+on property:ro.camera.sound.disabled=0
+    start toggleshutter
+	
+on property:ro.camera.sound.disabled=1
+    start toggleshutter
+
+on property:persist.sys.camera-mute=0
+    start toggleshutter
+
+on property:persist.sys.camera-mute=1
+    start toggleshutter
+
+# From init.gt-i5500.rc by subpsyke
+service get_macaddrs /system/bin/get_macaddrs
+    user root
+    oneshot
+    disabled
+
+on property:init.svc.ril-daemon=running
+    start get_macaddrs
+
+# bugreport is triggered by holding down the KEY_VOLUMEUP and KEY_HOME keycodes
+service bugreport /system/bin/dumpstate -d -v -o /sdcard/bugreports/bugreport
+    disabled
+    oneshot
+    keycodes 115 102
+
+# reboot is triggered by holding down the KEY_VOLUMEDOWN and KEY_POWER keycodes
+service reboot_key /system/bin/reboot
+    user system
+    oneshot
+    keycodes 114 107
+    disabled
