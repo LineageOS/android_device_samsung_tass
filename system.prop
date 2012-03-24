@@ -45,3 +45,23 @@ ro.media.enc.vid.bps.min =90000
 ro.media.enc.vid.bps.max =770000
 ro.media.enc.vid.fps.min = 5
 ro.media.enc.vid.fps.max = 15
+
+#Tweaks
+ro.com.google.locationfeatures=1
+ro.setupwizard.enable_bypass=1
+dalvik.vm.lockprof.threshold=500
+dalvik.vm.execution-mode=int:jit
+view.fading_edge_length=8
+view.minimum_fling_velocity=25
+view.scroll_friction=0.008
+view.touch_slop=15
+ro.media.dec.jpeg.memcap=10000000
+debug.composition.type=mdp
+media.stagefright.enable-player=true
+windowsmgr.max_events_per_sec=150
+debug.performance.tuning=1
+video.accelerate.hw=1
+ro.compcache.default=0
+ro.telephony.call_ring.delay=0
+ro.ril.disable.power.collapse=0
+dalvik.vm.heapsize=24m

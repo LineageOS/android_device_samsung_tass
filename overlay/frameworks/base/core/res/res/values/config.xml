@@ -24,16 +24,17 @@
 	<bool name="config_batterySdCardAccessibility">true</bool>
 
     <!-- Use the new fancy screen off animation -->
-    <bool name="config_animateScreenLights">false</bool>
+    <bool name="config_animateScreenLights">true</bool>
 
     <string-array translatable="false" name="config_tether_usb_regexs">
         <item>"usb\\d"</item>
     </string-array>
 
     <string-array translatable="false" name="config_tether_upstream_regexs">
+        <item>"ppp\\d"</item>
+        <item>"wlan\\d"</item>
     	<item>"pdp\\d"</item> 
     	<item>"rmnet\\d"</item>
-    	<item>"wlan\\d"</item>
     </string-array>
 
     <string-array translatable="false" name="config_tether_wifi_regexs">
@@ -113,4 +114,5 @@
          This feature should be disabled for most devices. -->
     <integer name="config_virtualKeyQuietTimeMillis">200</integer>
 
+    <string name="config_datause_iface">pdp0</string>
 </resources>
