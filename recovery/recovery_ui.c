@@ -20,13 +20,15 @@
 #include "common.h"
 #include "extendedcommands.h"
 
-char* MENU_HEADERS[] = { NULL };
+//char* MENU_HEADERS[] = { NULL };
+char* MENU_HEADERS[] = { "Galaxy Mini [Lilg]",
+                         NULL };
 
 char* MENU_ITEMS[] = { "reboot system now",
-                       "apply update.zip",
-                       "wipe data / reset",
+                       "apply update from sdcard",
+                       "wipe data/factory reset",
                        "wipe cache partition",
-                       "install zip from sd",
+                       "install zip from sdcard",
                        "backup and restore",
                        "mounts and storage",
                        "advanced",
@@ -42,9 +44,9 @@ int device_toggle_display(volatile char* key_pressed, int key_code) {
         return 1;
     // allow toggling of the display if the correct key is pressed, and the display toggle is allowed or the display is currently off
     if (ui_get_showing_back_button()) {
-        return get_allow_toggle_display() && (key_code == KEY_MENU || key_code == KEY_END);
+        return 0;
     }
-    return get_allow_toggle_display() && (key_code == KEY_MENU || key_code == KEY_POWER || key_code == KEY_END);
+    return get_allow_toggle_display() && (key_code == KEY_HOME || key_code == KEY_MENU || key_code == KEY_POWER || key_code == KEY_END);
 }
 
 int device_reboot_now(volatile char* key_pressed, int key_code) {
@@ -83,9 +85,15 @@ int device_handle_key(int key_code, int visible) {
             
             case KEY_END:
             case KEY_BACKSPACE:
-            case KEY_BACK:
+            case KEY_SEARCH:
+                if (ui_get_showing_back_button()) {
+                    return SELECT_ITEM;
+                }
                 if (!get_allow_toggle_display())
                     return GO_BACK;
+            case KEY_BACK:
+            case KEY_MENU:
+                return GO_BACK;
         }
     }
 
