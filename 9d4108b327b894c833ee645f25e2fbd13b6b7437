@@ -16,6 +16,24 @@
       "revId": "9d4108b327b894c833ee645f25e2fbd13b6b7437",
       "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAARX//+BM\u003d",
+        "filename": "libaudio/AudioHardware.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1413,
+      "author": {
+        "id": 1929
+      },
+      "writtenOn": "2012-03-25T10:45:11Z",
+      "side": 1,
+      "message": "thanks psyke, but i never facing routing issues, ;)",
+      "parentUuid": "AAAARX//+Co\u003d",
+      "revId": "9d4108b327b894c833ee645f25e2fbd13b6b7437",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
     }
   ]
 }
