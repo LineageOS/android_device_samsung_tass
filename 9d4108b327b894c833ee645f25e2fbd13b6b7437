@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAARX//+Co\u003d",
+        "filename": "libaudio/AudioHardware.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1413,
+      "author": {
+        "id": 2121
+      },
+      "writtenOn": "2012-03-25T07:07:51Z",
+      "side": 1,
+      "message": "I changed this from SND_DEVICE_SPEAKER to work around a bug that may only appear on the GT-I5500 (phone reboots on first incoming call).\n\nI recommend that you change this back, as it may cause issues with routing for you.",
+      "revId": "9d4108b327b894c833ee645f25e2fbd13b6b7437",
+      "serverId": "1ec6b3db-b2c1-4fa4-84a2-4c7efe89ba71",
+      "unresolved": false
+    }
+  ]
+}
