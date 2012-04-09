@@ -85,7 +85,6 @@ mv ./tass_update/system/lib/libcamera_client.so ./vendor/$MANUFACTURER/$DEVICE/p
 mv ./tass_update/system/lib/libcameraservice.so ./vendor/$MANUFACTURER/$DEVICE/proprietary/lib
 
 # wifi
-mv ./tass_update/system/wifi/ar6000.ko ./vendor/$MANUFACTURER/$DEVICE/proprietary/wifi
 mv ./tass_update/system/wifi/ath6k/AR6003/hw2.0/athtcmd_ram.bin ./vendor/$MANUFACTURER/$DEVICE/proprietary/ath6k/AR6003/hw2.0
 mv ./tass_update/system/wifi/ath6k/AR6003/hw2.0/athwlan.bin.z77 ./vendor/$MANUFACTURER/$DEVICE/proprietary/ath6k/AR6003/hw2.0
 mv ./tass_update/system/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin ./vendor/$MANUFACTURER/$DEVICE/proprietary/ath6k/AR6003/hw2.0

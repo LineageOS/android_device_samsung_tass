@@ -22,7 +22,6 @@ mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/lib
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/lib/egl
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/lib/hw
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/bin
-mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/wifi
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/etc
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/etc/firmware
 mkdir -p ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/ath6k
@@ -87,7 +86,6 @@ adb pull /system/lib/libcamera_client.so ../../../vendor/$MANUFACTURER/$DEVICE/p
 adb pull /system/lib/libcameraservice.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/lib
 
 # wifi
-adb pull /system/wifi/ar6000.ko ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/wifi
 adb pull /system/wifi/ath6k/AR6003/hw2.0/athtcmd_ram.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/ath6k/AR6003/hw2.0
 adb pull /system/wifi/ath6k/AR6003/hw2.0/athwlan.bin.z77 ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/ath6k/AR6003/hw2.0
 adb pull /system/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/ath6k/AR6003/hw2.0
@@ -207,7 +205,6 @@ PRODUCT_COPY_FILES += \\
 
 ## Atheros AR6002 firmware
 PRODUCT_COPY_FILES += \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/wifi/ar6000.ko:system/wifi/ar6000.ko \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/ath6k/AR6003/hw2.0/athtcmd_ram.bin:system/wifi/ath6k/AR6003/hw2.0/athtcmd_ram.bin \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/ath6k/AR6003/hw2.0/athwlan.bin.z77:system/wifi/ath6k/AR6003/hw2.0/athwlan.bin.z77 \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/ath6k/AR6003/hw2.0/bdata.SD31.bin:system/wifi/ath6k/AR6003/hw2.0/bdata.SD31.bin \\

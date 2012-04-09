@@ -91,8 +91,6 @@ PRODUCT_COPY_FILES += \
     device/samsung/tass/ueventd.gt-s5570.rc:root/ueventd.gt-s5570.rc \
     device/samsung/tass/prebuilt/fsr.ko:root/lib/modules/fsr.ko \
     device/samsung/tass/prebuilt/fsr_stl.ko:root/lib/modules/fsr_stl.ko \
-    device/samsung/tass/prebuilt/rfs_fat.ko:root/lib/modules/rfs_fat.ko \
-    device/samsung/tass/prebuilt/rfs_glue.ko:root/lib/modules/rfs_glue.ko \
     device/samsung/tass/prebuilt/sec_param.ko:root/lib/modules/sec_param.ko \
     device/samsung/tass/TASS.rle:root/TASS.rle \
     device/samsung/tass/init.gt-s5570.rc:root/init.gt-s5570.rc
@@ -101,6 +99,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/tass/prebuilt/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
     device/samsung/tass/prebuilt/hostapd.conf:system/etc/wifi/hostapd.conf \
+    device/samsung/tass/prebuilt/ar6000.ko:system/wifi/ar6000.ko \
     device/samsung/tass/prebuilt/get_macaddrs:system/bin/get_macaddrs \
     device/samsung/tass/prebuilt/dhcpcd.conf:system/etc/dhcpcd/dhcpcd.conf 
 
@@ -108,6 +107,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     device/samsung/tass/prebuilt/AutoVolumeControl.txt:system/etc/AutoVolumeControl.txt \
     device/samsung/tass/prebuilt/AudioFilter.csv:system/etc/AudioFilter.csv \
+    device/samsung/tass/prebuilt/audio_effects.conf:system/etc/audio_effects.conf \
     device/samsung/tass/prebuilt/media_profiles.xml:system/etc/media_profiles.xml \
     device/samsung/tass/prebuilt/audio.conf:system/etc/bluetooth/audio.conf \
     device/samsung/tass/prebuilt/vold.fstab:system/etc/vold.fstab 
