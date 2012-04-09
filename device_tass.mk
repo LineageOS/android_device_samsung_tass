@@ -119,6 +119,15 @@ PRODUCT_COPY_FILES += \
     device/samsung/tass/prebuilt/sec_key.kl:system/usr/keylayout/sec_key.kl \
     device/samsung/tass/prebuilt/sec_key.kcm.bin:system/usr/keychars/sec_key.kcm.bin
 
+## Egl
+PRODUCT_COPY_FILES += \
+    device/samsung/tass/prebuilt/egl/libGLESv1_CM_adreno200.so:system/lib/egl/libGLESv1_CM_adreno200.so \
+    device/samsung/tass/prebuilt/egl/libq3dtools_adreno200.so:system/lib/egl/libq3dtools_adreno200.so \
+    device/samsung/tass/prebuilt/egl/libEGL_adreno200.so:system/lib/egl/libEGL_adreno200.so \
+    device/samsung/tass/prebuilt/egl/libGLESv2_adreno200.so:system/lib/egl/libGLESv2_adreno200.so \
+    device/samsung/tass/prebuilt/libgsl.so:system/lib/libgsl.so \
+    device/samsung/tass/prebuilt/egl/egl.cfg:system/lib/egl/egl.cfg 
+
 $(call inherit-product-if-exists, vendor/samsung/tass/tass-vendor.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0

@@ -19,7 +19,6 @@ MANUFACTURER=samsung
 
 mkdir -p ./vendor/$MANUFACTURER/$DEVICE/proprietary/
 mkdir -p ./vendor/$MANUFACTURER/$DEVICE/proprietary/lib
-mkdir -p ./vendor/$MANUFACTURER/$DEVICE/proprietary/lib/egl
 mkdir -p ./vendor/$MANUFACTURER/$DEVICE/proprietary/lib/hw
 mkdir -p ./vendor/$MANUFACTURER/$DEVICE/proprietary/etc
 mkdir -p ./vendor/$MANUFACTURER/$DEVICE/proprietary/etc/firmware
@@ -118,11 +117,5 @@ mv ./tass_update/system/lib/hw/sensors.default.so ./vendor/$MANUFACTURER/$DEVICE
 mv ./tass_update/system/bin/memsicd ./vendor/$MANUFACTURER/$DEVICE/proprietary/bin
 
 # camera
-mv ./tass_update/system/lib/egl/libGLESv1_CM_adreno200.so ./vendor/$MANUFACTURER/$DEVICE/proprietary/lib/egl
-mv ./tass_update/system/lib/egl/libq3dtools_adreno200.so ./vendor/$MANUFACTURER/$DEVICE/proprietary/lib/egl
-mv ./tass_update/system/lib/egl/libEGL_adreno200.so ./vendor/$MANUFACTURER/$DEVICE/proprietary/lib/egl
-mv ./tass_update/system/lib/egl/libGLESv2_adreno200.so ./vendor/$MANUFACTURER/$DEVICE/proprietary/lib/egl
 mv ./tass_update/system/etc/firmware/yamato_pfp.fw ./vendor/$MANUFACTURER/$DEVICE/proprietary/etc/firmware
 mv ./tass_update/system/etc/firmware/yamato_pm4.fw ./vendor/$MANUFACTURER/$DEVICE/proprietary/etc/firmware
-mv ./tass_update/system/lib/libgsl.so ./vendor/$MANUFACTURER/$DEVICE/proprietary/lib
-mv ./tass_update/system/lib/egl/egl.cfg ./vendor/$MANUFACTURER/$DEVICE/proprietary/lib/egl
